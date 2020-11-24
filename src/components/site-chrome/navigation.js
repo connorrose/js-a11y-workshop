@@ -15,7 +15,7 @@ const Navigation = () => (
                 <h3 className={`navHeading ${navStyles.navHeading}`}>
                     Demos
                 </h3>
-                <ul id="page-navigation">
+                <ul id="page-navigation" tabIndex="-1">
                     <li><Link to="/dropdown">Dropdown</Link></li>
                     <li><Link to="/announcer">Announcer</Link></li>
                     <li><Link to="/layout">Layout</Link></li>
