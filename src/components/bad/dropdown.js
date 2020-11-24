@@ -11,12 +11,14 @@ const Dropdown = ({ activatorText, items = [] }) => {
     const handleClick = () => {
         setIsOpen(!isOpen)
     }
+
     const handleClickOutside = (event) => {
         if (listRef.current.contains(event.target) || activatorRef.current.contains(event.target)) {
             return
         }
         setIsOpen(false)
     }
+
     useEffect(() => {
         if (isOpen) {
           document.addEventListener("mousedown", handleClickOutside)
@@ -28,10 +30,9 @@ const Dropdown = ({ activatorText, items = [] }) => {
           document.removeEventListener("mousedown", handleClickOutside)
         }
       }, [isOpen])
+
     return (
-        <div
-            className="wrap"
-        >
+        <div className="wrap">
             <span
                 ref={activatorRef}
                 className="activator"
