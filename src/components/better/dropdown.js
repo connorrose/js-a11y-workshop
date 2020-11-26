@@ -32,7 +32,7 @@ const Dropdown = ({ activatorText = 'Dropdown', items = [] }) => {
   }
 
   useEffect(() => {
-    if (isOpen) {
+    if (isOpen && items.length) {
       dropdownListRef.current.querySelector('a').focus();
       document.addEventListener('mousedown', clickOutsideHandler)
     }
@@ -48,6 +48,7 @@ const Dropdown = ({ activatorText = 'Dropdown', items = [] }) => {
         <button
           aria-haspopup="true"
           aria-controls="dropdown1"
+          data-testid="dropdown-activator"
           onClick={clickHandler}
           ref={activatorRef}
           className="dropdown-activator"
@@ -59,9 +60,10 @@ const Dropdown = ({ activatorText = 'Dropdown', items = [] }) => {
           ref={dropdownListRef}
           className={`dropdown-itemList ${isOpen ? 'active' : ''}`}
           role="list"
+          data-testid="dropdown-itemList"
         >
           {items.map((item) => (
-            <li role="listitem">
+            <li role="listitem" key={`${item.text}-${item.url}`}>
               <a href={item.url}>{item.text}</a>
             </li>
           ))}
